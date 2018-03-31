@@ -8,11 +8,20 @@ public class MyArray {
     private int[] arr;
 
     public MyArray(int n) {
+        initArr(n);
+        new ArrayGUI(arr, "Array Panel");
+    }
+
+    public MyArray(int n, String windowName) {
+        initArr(n);
+        new ArrayGUI(arr, windowName);
+    }
+
+    private void initArr(int n) {
         arr = new int[n];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 1000);
         }
-        new ArrayGUI(arr);
     }
 
     public int length() {

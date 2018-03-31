@@ -5,14 +5,19 @@ import gui.tools.MyArray;
 public class Main {
 
     public static void main(String[] arg) {
-        MyArray myArr = new MyArray(500);
-        MyArray myArr2 = new MyArray(200);
+        int amount = 500;
+        startSort(amount, new SelectSort());
+        startSort(amount, new BubbleSort());
+        startSort(amount, new MergeSort());
+    }
+
+    private static void startSort(int amount, Sort sort) {
+        MyArray myArr = new MyArray(amount, sort.getClass().getSimpleName());
         new Thread() {
             @Override
             public void run() {
-                SelectSort.sort(myArr);
+                sort.sort(myArr);
             }
         }.start();
-        BubbleSort.sort(myArr2);
     }
 }

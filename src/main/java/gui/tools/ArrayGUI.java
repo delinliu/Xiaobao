@@ -23,7 +23,7 @@ class ArrayGUI {
     private int max;
     private Map<Integer, Color> colorMap;
 
-    public ArrayGUI(int[] arr) {
+    public ArrayGUI(int[] arr, String windowName) {
         this.arr = arr;
         min = max = arr[0];
         Set<Integer> set = new HashSet<>();
@@ -64,7 +64,7 @@ class ArrayGUI {
         }
 
         ArrayPanel arrayPanel = new ArrayPanel();
-        JFrame frame = new JFrame("Array Panel");
+        JFrame frame = new JFrame(windowName);
         frame.setSize(3000, 300);
         frame.setBackground(Color.white);
         frame.setContentPane(arrayPanel);
@@ -116,11 +116,19 @@ class ArrayGUI {
             g.fillRect(0, h + TOP_SPACE, w, BOTTOM_SPACE);
 
             g.setColor(color);
+
+            int lastEndX = 0;
             for (int i = 0; i < arr.length; i++) {
                 int startX = (int) (i * everyW);
                 int height = (int) (everyH * arr[i]);
+                int width = (int) everyW - EVERY_SPACE + 1;
+                if (startX - lastEndX < EVERY_SPACE) {
+                    startX++;
+                    width--;
+                }
                 g.setColor(colorMap.get(arr[i]));
-                g.fillRect(startX, h - height + TOP_SPACE, (int) everyW - EVERY_SPACE, height);
+                g.fillRect(startX, h - height + TOP_SPACE, width, height);
+                lastEndX = startX + width;
             }
         }
     }
