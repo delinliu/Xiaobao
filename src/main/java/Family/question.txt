@@ -1,0 +1,8 @@
+定义一个类，叫做Family，它拥有三个非静态成员变量：father, mother, pet。
+father和mother是Person类的对象，pet是Cat类的对象。
+Person类有两个非静态成员变量：name, age，name是String类型，age是int类型。
+Pet类也有两个非静态成员变量：name，age，name是String类型，age是int类型。
+Person类有一个静态成员变量：description，是String类型，它的值是“人类”
+Pet类也有一个静态成员变量：description，是String类型，它的值是“猫”
+为Person、Pet类都写一个构造方法，能够初始化name和age；为这两个类的每个非静态成员变量写set和get方法，为它们的静态成员变量写get方法。
+为Family写一个方法：printInformation，能够依次打印出father、mother、pet的description、name和age。
